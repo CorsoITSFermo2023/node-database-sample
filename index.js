@@ -1,7 +1,7 @@
-const { all } = require("./db");
+const { listaScontrini } = require("./dao");
 
 async function run() {
-  const rows = await all('SELECT * FROM scontrino');
+  const rows = await listaScontrini();
   console.log(rows);
 }
 

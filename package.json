@@ -3,5 +3,15 @@
     "date-fns": "^2.30.0",
     "node-fetch": "^2.6.11",
     "sqlite3": "^5.1.6"
-  }
+  },
+  "name": "database-sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
