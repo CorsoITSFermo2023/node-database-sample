@@ -1,4 +1,4 @@
-const { all } = require("./db")
+const { all, insert } = require("./db")
 
 /**
  * 
@@ -17,6 +17,22 @@ async function listaRigheScontrino(id_scontrino) {
   return await all('SELECT * FROM riga_scontrino WHERE id_scontrino = ?', [id_scontrino]);
 }
 
-module.exports = {
+/**
+ * 
+ * @param {Date} data 
+ * @param {number} totale 
+ * @param {number} numero_scontrini 
+ * @param {number} media 
+ */
+async function inserisciTotale(data, totale, numero_scontrini, media) {
+  return await insert(
+    'insert into totale_giorno (data, totale, numero_scontrini, media) values (?,?,?,?)',
+    [data, totale, numero_scontrini, media]
+  )
+}
 
+module.exports = {
+  inserisciTotale,
+  listaRigheScontrino,
+  listaScontrini
 }
