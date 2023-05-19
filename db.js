@@ -28,7 +28,7 @@ const all = (query, param) => {
  */
 const run = (query, param) => {
   return new Promise((resolve, reject) => {
-    db.run(query, param, (err, rows) => {
+    db.run(query, param, (err, rows, other) => {
       if(err) {
         reject(err);
       } else {
@@ -38,7 +38,28 @@ const run = (query, param) => {
   })
 }
 
+/**
+ * 
+ * @param {string} query 
+ * @param {any[]} param 
+ * @returns any
+ */
+const insert = (query, param) => {
+  return new Promise((resolve, reject) => {
+    db.run(query, param, function (err, rows) {
+      if(err) {
+        reject(err);
+      } else {
+        resolve(this.lastID);
+      }
+    })
+  })
+}
+
+
+
 module.exports = {
   all,
-  run
+  run,
+  insert
 }
