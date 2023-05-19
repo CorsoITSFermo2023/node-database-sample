@@ -1,8 +1,11 @@
-const { db } = require("./db");
+const { run } = require("./db");
 
-async function run() {
-  db.run('CREATE TABLE scontrino (id INTEGER PRIMARY KEY AUTOINCREMENT, datetime STRING)');
-  db.run('CREATE TABLE riga_scontrino (id INTEGER PRIMARY KEY AUTOINCREMENT, id_scontrino INTEGER, descrizione TEXT, price REAL, qty INTEGER)');
+async function initStruct() {
+  await run('CREATE TABLE IF NOT EXISTS scontrino (id INTEGER PRIMARY KEY AUTOINCREMENT, dataorario STRING)');
+  await run('CREATE TABLE IF NOT EXISTS riga_scontrino (id_scontrino INTEGER, descrizione TEXT, price REAL, qty INTEGER)');
+  await run('CREATE TABLE IF NOT EXISTS totale_giorno (data string KEY, totale REAL, numero_scontrini INTEGER, media REAL)');
 }
 
-run();
+module.exports = {
+  initStruct
+}
