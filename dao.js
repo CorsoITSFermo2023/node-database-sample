@@ -1,3 +1,4 @@
+const { format, isDate } = require("date-fns");
 const { all, insert } = require("./db")
 
 /**
@@ -28,7 +29,11 @@ async function listaRigheScontrino(id_scontrino) {
 async function inserisciTotale(data, totale, numero_scontrini, media) {
   return await insert(
     'insert into totale_giorno (data, totale, numero_scontrini, media) values (?,?,?,?)',
-    [data, totale, numero_scontrini, media]
+    [
+      isDate(data) ? format(data, 'yyyy-MM-dd') : data,
+      totale,
+      numero_scontrini,
+      media]
   )
 }
 
