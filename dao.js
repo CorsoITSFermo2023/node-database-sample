@@ -3,7 +3,7 @@ const { all, insert } = require("./db")
 
 /**
  * 
- * @returns {Promise<Array<{id: number, datetime: string}>>}
+ * @returns {Promise<Array<{id: number, dataorario: string}>>}
  */
 async function listaScontrini() {
   return await all('SELECT * FROM scontrino');
@@ -12,7 +12,7 @@ async function listaScontrini() {
 /**
  * 
  * @param {number} id_scontrino 
- * @returns {Promise<Array<{id: number, id_scontrino: number, descrizione: string, price: number, qty: number}>>}
+ * @returns {Promise<Array<{id_scontrino: number, descrizione: string, price: number, qty: number}>>}
  */
 async function listaRigheScontrino(id_scontrino) {
   return await all('SELECT * FROM riga_scontrino WHERE id_scontrino = ?', [id_scontrino]);
