@@ -27,9 +27,9 @@ async function run() {
         media= totale/qtyScontrini;
         }
       }
-      const totaleGiornata= await inserisciTotale(date[i], totale, qtyScontrini, media)
-      console.log(totaleGiornata)
     }
+    await inserisciTotale(date[i], totale, qtyScontrini, media);
+    console.log(rows)
   }
 }
 
