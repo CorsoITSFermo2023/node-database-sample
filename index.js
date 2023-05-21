@@ -28,8 +28,7 @@ async function run() {
         }
       }
     }
-    await inserisciTotale(date[i], totale, qtyScontrini, media);
-    console.log(rows)
+    const giornata= await inserisciTotale(date[i], totale, qtyScontrini, media);
   }
 }
 
